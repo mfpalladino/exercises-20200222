@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CashlessRegistration.TokenService.App.Domain.Models.Request;
-using CashlessRegistration.TokenService.App.Domain.Models.Response;
-using CashlessRegistration.TokenService.App.Domain.Services;
+using CashlessRegistration.TokenService.App.ApplicatonServices;
+using CashlessRegistration.TokenService.App.ApplicatonServices.Models.Request;
+using CashlessRegistration.TokenService.App.ApplicatonServices.Models.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashlessRegistration.TokenService.Controllers

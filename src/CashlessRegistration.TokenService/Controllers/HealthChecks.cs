@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using CashlessRegistration.TokenService.App.Infrastructure.HealthCheck;
+using CashlessRegistration.TokenService.App.ApplicatonServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashlessRegistration.TokenService.Controllers

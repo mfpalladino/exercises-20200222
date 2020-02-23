@@ -15,5 +15,24 @@ namespace CashlessRegistration.TokenService.App.Domain.Entities
             CardNumber = cardNumber;
             GeneratedAt = generatedAt;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is TokenRegistration tokenRegistration))
+                return false;
+
+            return tokenRegistration.Id == Id;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = Id.GetHashCode();
+                hashCode = (hashCode * 397) ^ CardNumber.GetHashCode();
+                hashCode = (hashCode * 397) ^ GeneratedAt.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }

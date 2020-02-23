@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CashlessRegistration.TokenService.App.Domain.Validations
 {
-    public static partial class RuleBuilderExceptions
+    public static partial class TokenRegistrationDateValidation
     {
-        public static IRuleBuilderOptions<T, DateTime> TokenRegistrationDateValidation<T>(this IRuleBuilder<T, DateTime> rule)
+        public static IRuleBuilderOptions<T, DateTime> ValidateTokenRegistrationDate<T>(this IRuleBuilder<T, DateTime> rule)
         {
             return rule.NotEmpty().WithMessage("RegistrationDate must be informed");
         }

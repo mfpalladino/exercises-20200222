@@ -2,15 +2,13 @@
 
 namespace CashlessRegistration.TokenService.App.Domain.Validations
 {
-    public static partial class RuleBuilderExceptions
+    public static class CardCvvNumberValidation
     {
-        public static IRuleBuilderOptions<T, int> CardCvvNumberValidation<T>(this IRuleBuilder<T, int> rule)
+        public static IRuleBuilderOptions<T, int> ValidateCardCvvNumber<T>(this IRuleBuilder<T, int> rule)
         {
-            const int maximumCardCvvChars = 3;
-
             return rule
                 .Must(x => x > 0).WithMessage("Card cvv number must be greather than zero")
-                .Must(x => x.ToString().Length <= maximumCardCvvChars).WithMessage($"Card CVV number can't contains more than {maximumCardCvvChars} chars");
+                .LessThanOrEqualTo(999).WithMessage("Card CVV number must be less than or equal 999");
         }
     }
 }

@@ -1,0 +1,40 @@
+﻿using System;
+using CashlessRegistration.Shared;
+using CashlessRegistration.TokenService.App.Domain.ValueObjects;
+
+namespace CashlessRegistration.TokenService.App.Domain.Services
+{
+    public class TokenDefaultGenerator : ITokenGenerator
+    {
+        private const int AbsoluteDifferenceToFilterBaseToken = 5;
+        private readonly ITokenGeneratorClock _tokenGeneratorClock;
+
+        public TokenDefaultGenerator(ITokenGeneratorClock tokenGeneratorClock)
+        {
+            _tokenGeneratorClock = tokenGeneratorClock ?? throw new ArgumentNullException(nameof(tokenGeneratorClock));
+        }
+
+        public Token Generate(Card card)
+        {
+            var baseDateTime = _tokenGeneratorClock.Now();
+            var baseToken = card.Number.ToString() +
+                            baseDateTime.Year +
+                            baseDateTime.Month.ToString().PadLeft(2, '0') +
+                            baseDateTime.Day.ToString().PadLeft(2, '0') +
+                            baseDateTime.Hour.ToString().PadLeft(2, '0') +
+                            baseDateTime.Minute.ToString().PadLeft(2, '0');
+
+            var baseTokenAsIntArray = baseToken.ToIntArray();
+            var filteredByAbsoluteDiffrenceBaseToken = baseTokenAsIntArray.FindByAbsoluteDifference(AbsoluteDifferenceToFilterBaseToken);
+            var rotatedToRightBaseToken = filteredByAbsoluteDiffrenceBaseToken.RotateToRight(card.Cvv);
+
+            return new Token(rotatedToRightBaseToken.ToLong(), baseDateTime);
+        }
+
+        public bool IsValid(Card card, long token)
+        {
+            var generatedToken = Generate(card);
+            return generatedToken.Value.Equals(token);
+        }
+    }
+}

@@ -5,15 +5,27 @@ namespace CashlessRegistration.TokenService.App.Domain.ValueObjects
     public struct Token
     {
         public long Value { get; }
-        public DateTime From { get; }
+        public DateTime GeneratedAt { get; }
 
-        public Token(long token, DateTime from)
+        public Token(long token, DateTime generatedAt)
         {
-            if (token <= 0)
-                throw new ArgumentOutOfRangeException(nameof(token), "token must be greather than zero");
-
             Value = token;
-            From = @from;
+            GeneratedAt = generatedAt;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Token))
+                return false;
+
+            var token = (Token)obj;
+            return Value == token.Value &&
+                   GeneratedAt == token.GeneratedAt;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Value, GeneratedAt);
         }
     }
 }

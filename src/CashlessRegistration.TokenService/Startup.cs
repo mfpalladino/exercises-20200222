@@ -26,6 +26,7 @@ namespace CashlessRegistration.TokenService
             services.AddMvc(options =>
                 {
                     options.Filters.Add(new ContractValidationFilter());
+                    options.Filters.Add(new ExceptionHandlingAttribute());
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddFluentValidation(mvcConfiguration => mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Startup>());
