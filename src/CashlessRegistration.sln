@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashlessRegistration.Shared", "CashlessRegistration.Shared\CashlessRegistration.Shared.csproj", "{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashlessRegistration.Shared.UnitTests", "CashlessRegistration.Shared.UnitTests\CashlessRegistration.Shared.UnitTests.csproj", "{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashlessRegistration.TokenService", "CashlessRegistration.TokenService\CashlessRegistration.TokenService.csproj", "{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8FCAA18C-4A4C-43C2-9D03-EC96E8862B1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TokenService", "TokenService", "{0D67FE57-D17E-4124-9877-56ADAA2FA628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashlessRegistration.TokenService.UnitTests", "CashlessRegistration.TokenService.UnitTests\CashlessRegistration.TokenService.UnitTests.csproj", "{C4311D66-8516-472A-8287-ECED5DC74B7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4311D66-8516-472A-8287-ECED5DC74B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4311D66-8516-472A-8287-ECED5DC74B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4311D66-8516-472A-8287-ECED5DC74B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4311D66-8516-472A-8287-ECED5DC74B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A5EB1D05-AF01-43E4-A4B8-FB54D909E86D} = {8FCAA18C-4A4C-43C2-9D03-EC96E8862B1C}
+		{BE4E6AF9-E81B-4ABB-82D6-2852C1B76737} = {8FCAA18C-4A4C-43C2-9D03-EC96E8862B1C}
+		{8F4E8EE3-AA07-4DD7-B327-893DECD2C78A} = {0D67FE57-D17E-4124-9877-56ADAA2FA628}
+		{C4311D66-8516-472A-8287-ECED5DC74B7E} = {0D67FE57-D17E-4124-9877-56ADAA2FA628}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4222A142-1515-49CE-A444-35DA0150F1BC}
+	EndGlobalSection
+EndGlobal
