@@ -1,10 +1,11 @@
-﻿using CashlessRegistration.TokenService.App.Domain.ValueObjects;
+﻿using System;
+using CashlessRegistration.TokenService.App.Domain.ValueObjects;
 
 namespace CashlessRegistration.TokenService.App.Domain.Services
 {
     public interface ITokenGenerator
     {
-        Token Generate(Card card);
-        bool IsValid(Card card, long token);
+        Token Generate(Card card, DateTime baseDateTime);
+        bool IsValid(Card card, DateTime baseDateTime, long token);
     }
 }

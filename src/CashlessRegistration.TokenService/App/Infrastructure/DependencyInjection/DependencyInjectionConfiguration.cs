@@ -1,5 +1,6 @@
 ﻿using CashlessRegistration.TokenService.App.ApplicatonServices;
 using CashlessRegistration.TokenService.App.Domain.Services;
+using CashlessRegistration.TokenService.App.Infrastructure.EF;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Internal;
 
@@ -11,15 +12,17 @@ namespace CashlessRegistration.TokenService.App.Infrastructure.DependencyInjecti
         {
             //Infrastructure
             services.AddSingleton<ISystemClock, SystemClock>();
-            services.AddSingleton<ITokenGeneratorClock, TokenGeneratorDefaultClock>();
-            services.AddSingleton<ITokenTtlChecker, TokenTtlDefaultChecker>();
-            services.AddScoped<GeneralHealthCheckService>();
+            services.AddSingleton<IEncryptionProviderLoader, EncryptionProviderLoaderAes>();
 
             //Domain services
+            services.AddSingleton<ITokenGeneratorClock, TokenGeneratorDefaultClock>();
+            services.AddSingleton<ITokenTtlChecker, TokenTtlDefaultChecker>();
+            services.AddSingleton<ITokenGenerator, TokenDefaultGenerator>();
+
+            //Application services
             services.AddScoped<TokenCreateService>();
             services.AddScoped<TokenCheckService>();
-            
-            services.AddSingleton<ITokenGenerator, TokenDefaultGenerator>();
+            services.AddScoped<GeneralHealthCheckService>();
         }
     }
 }

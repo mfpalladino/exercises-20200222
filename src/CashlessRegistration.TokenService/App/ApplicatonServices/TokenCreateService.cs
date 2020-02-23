@@ -13,11 +13,13 @@ namespace CashlessRegistration.TokenService.App.ApplicatonServices
     public class TokenCreateService
     {
         private readonly IDatabaseContext _databaseContext;
+        private readonly ITokenGeneratorClock _tokenGeneratorClock;
         private readonly ITokenGenerator _tokenGenerator;
 
-        public TokenCreateService(IDatabaseContext databaseContext,  ITokenGenerator tokenGenerator)
+        public TokenCreateService(IDatabaseContext databaseContext, ITokenGeneratorClock tokenGeneratorClock, ITokenGenerator tokenGenerator)
         {
             _databaseContext = databaseContext;
+            _tokenGeneratorClock = tokenGeneratorClock;
             _tokenGenerator = tokenGenerator;
         }
 
@@ -32,7 +34,7 @@ namespace CashlessRegistration.TokenService.App.ApplicatonServices
         private async Task<TokenCreateResponse> InternalCreateAsync(TokenCreateRequest tokenCreateRequest, CancellationToken cancellationToken = default(CancellationToken))
         {
             //TODO business rule: should we receive a deviceId to "connect" the token with that device? 
-            var generatedToken = _tokenGenerator.Generate(new Card(tokenCreateRequest.CardNumber, tokenCreateRequest.Cvv));
+            var generatedToken = _tokenGenerator.Generate(new Card(tokenCreateRequest.CardNumber, tokenCreateRequest.Cvv), _tokenGeneratorClock.Now());
 
             var tokenRegistration = new TokenRegistration(generatedToken.Value, tokenCreateRequest.CardNumber, generatedToken.GeneratedAt);
             _databaseContext.TokenRegistrations.Add(tokenRegistration);

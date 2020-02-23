@@ -43,7 +43,7 @@ namespace CashlessRegistration.TokenService.App.ApplicatonServices
             if (tokenRegistration == null)
                 return TokenCheckResponse.Invalid;
 
-            if (!_tokenGenerator.IsValid(new Card(tokenRegistration.CardNumber, tokenCheckRequest.Cvv), tokenRegistration.Id))
+            if (!_tokenGenerator.IsValid(new Card(tokenRegistration.CardNumber, tokenCheckRequest.Cvv), tokenCheckRequest.RegistrationDate, tokenRegistration.Id))
                 return TokenCheckResponse.Invalid;
 
             return TokenCheckResponse.Valid;

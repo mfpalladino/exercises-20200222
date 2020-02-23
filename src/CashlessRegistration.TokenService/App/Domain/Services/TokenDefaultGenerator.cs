@@ -7,16 +7,10 @@ namespace CashlessRegistration.TokenService.App.Domain.Services
     public class TokenDefaultGenerator : ITokenGenerator
     {
         private const int AbsoluteDifferenceToFilterBaseToken = 5;
-        private readonly ITokenGeneratorClock _tokenGeneratorClock;
 
-        public TokenDefaultGenerator(ITokenGeneratorClock tokenGeneratorClock)
-        {
-            _tokenGeneratorClock = tokenGeneratorClock ?? throw new ArgumentNullException(nameof(tokenGeneratorClock));
-        }
 
-        public Token Generate(Card card)
+        public Token Generate(Card card, DateTime baseDateTime)
         {
-            var baseDateTime = _tokenGeneratorClock.Now();
             var baseToken = card.Number.ToString() +
                             baseDateTime.Year +
                             baseDateTime.Month.ToString().PadLeft(2, '0') +
@@ -31,9 +25,9 @@ namespace CashlessRegistration.TokenService.App.Domain.Services
             return new Token(rotatedToRightBaseToken.ToLong(), baseDateTime);
         }
 
-        public bool IsValid(Card card, long token)
+        public bool IsValid(Card card, DateTime baseDateTime, long token)
         {
-            var generatedToken = Generate(card);
+            var generatedToken = Generate(card, baseDateTime);
             return generatedToken.Value.Equals(token);
         }
     }
