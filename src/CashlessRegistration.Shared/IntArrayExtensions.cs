@@ -87,7 +87,7 @@ namespace CashlessRegistration.Shared
                     var leftValue = source[currentLeftIndex];
                     var rightValue = source[currentRightIndex];
 
-                    if (rightValue > leftValue && rightValue - leftValue > 4)
+                    if (rightValue > leftValue && rightValue - leftValue > absoluteDifference)
                         lastRightIndex--;
                 }
             }

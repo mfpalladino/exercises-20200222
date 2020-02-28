@@ -7,6 +7,7 @@ namespace CashlessRegistration.Shared.UnitTests
         //TODO I would like to use test case to do this!
         private readonly List<int[]> _findByAbsoluteDifferenceInputs;
         private readonly List<int[]> _findByAbsoluteDifferenceExpectedOutputs;
+        private readonly List<int[]> _findByAbsoluteDifferenceExpectedOutputsWhenDifferenceIs9;
 
         private readonly List<int[]> _rotateToRightInputs;
         private readonly List<int[]> _rotateToRightExpectedOutputs;
@@ -24,6 +25,12 @@ namespace CashlessRegistration.Shared.UnitTests
             {
                 new[] {1, 1, 3, 4, 4, 5, 5},
                 new[] {1, 3, 3, 4, 5}
+            };
+
+            _findByAbsoluteDifferenceExpectedOutputsWhenDifferenceIs9 = new List<int[]>
+            {
+                new[] { 1, 1, 3, 4, 4, 5, 5, 6, 9},
+                new[] { 1, 3, 3, 4, 5, 6 }
             };
 
             _rotateToRightInputs = new List<int[]>

@@ -10,11 +10,16 @@ namespace CashlessRegistration.Shared.UnitTests
         [Fact]
         public void FindByAbsoluteDifferenceReturnExpectedResults()
         {
-            const int absoluteDifferenceToFint = 4;
+            var absoluteDifferenceToFind = 4;
 
             //Action and asserts for each case
-            for (var inputIndex = 0; inputIndex < _findByAbsoluteDifferenceInputs.Count - 1; inputIndex++)
-                _findByAbsoluteDifferenceInputs[inputIndex].FindByAbsoluteDifference(absoluteDifferenceToFint).IsSameOrEqualTo(_findByAbsoluteDifferenceExpectedOutputs[inputIndex]);
+            for (var inputIndex = 0; inputIndex < _findByAbsoluteDifferenceInputs.Count; inputIndex++)
+                _findByAbsoluteDifferenceInputs[inputIndex].FindByAbsoluteDifference(absoluteDifferenceToFind).Should().BeEquivalentTo(_findByAbsoluteDifferenceExpectedOutputs[inputIndex]);
+
+
+            absoluteDifferenceToFind = 9;
+            for (var inputIndex = 0; inputIndex < _findByAbsoluteDifferenceInputs.Count; inputIndex++)
+                _findByAbsoluteDifferenceInputs[inputIndex].FindByAbsoluteDifference(absoluteDifferenceToFind).Should().BeEquivalentTo(_findByAbsoluteDifferenceExpectedOutputsWhenDifferenceIs9[inputIndex]);
         }
 
         [Fact]

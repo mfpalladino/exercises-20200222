@@ -1,7 +1,6 @@
 using System;
 using FluentAssertions;
 using Xunit;
-using FluentAssertions.Common;
 
 namespace CashlessRegistration.Shared.UnitTests
 {
@@ -14,7 +13,7 @@ namespace CashlessRegistration.Shared.UnitTests
 
             //Action and asserts for each case
             for (var inputIndex = 0; inputIndex < _rotateToRightInputs.Count - 1; inputIndex++)
-                _rotateToRightInputs[inputIndex].RotateToRight(numberOfRotations).IsSameOrEqualTo(_rotateToRightExpectedOutputs[inputIndex]);
+                _rotateToRightInputs[inputIndex].RotateToRight(numberOfRotations).Should().BeEquivalentTo(_rotateToRightExpectedOutputs[inputIndex]);
         }
 
         [Fact]
